@@ -1,0 +1,246 @@
+@keyframes sway{
+    0%{transform: rotate(5deg) translate(-50%, -50%)}
+    50%{transform: rotate(-5deg) translate(-50%, -50%)}
+    100%{transform: rotate(5deg) translate(-50%, -50%)}  
+}
+
+@keyframes aniOut{
+    0%{transform: scale(1)}
+    100%{transform: scale(0)}
+}
+
+@keyframes aniIn{
+    0%{transform: scale(0)}
+    100%{transform: scale(1)}
+}
+
+@keyframes aniOutSkewLeft{
+    0%{transform: scale(1) rotate(-5deg)}
+    100%{transform: scale(0) rotate(0deg)}
+}
+
+@keyframes aniInSkewLeft{
+    0%{transform: scale(0) rotate(0deg)}
+    100%{transform: scale(1) rotate(-5deg)}
+}
+
+@keyframes aniInOut{
+    0%{transform: scale(0) rotate(0deg)}
+    50%{transform: scale(1) rotate(5deg)}
+    100%{transform: scale(0) rotate(0deg)}
+}
+
+@keyframes aniInSkewRight{
+    0%{transform: scale(0) rotate(0deg)}
+    100%{transform: scale(1) rotate(5deg)}
+}
+
+@keyframes readyAni{
+    0%{transform: scale(0) rotate(0deg)}
+    33%{transform: scale(1) rotate(-5deg)}
+    66%{transform: scale(1) rotate(-5deg)}
+    100%{transform: scale(0) rotate(0deg)}
+}
+
+
+@keyframes goAni{
+    0%{transform: scale(0) rotate(0deg)}
+    33%{transform: scale(1) rotate(5deg)}
+    66%{transform: scale(1) rotate(5deg)}
+    100%{transform: scale(0) rotate(0deg)}
+}
+
+
+@keyframes aniOutCic{
+    0%{transform: translate(-50%, -210px) scale(1)}
+    100%{transform: translate(-50%, -210px) scale(0)}
+}
+
+
+*{
+    cursor: none;
+    color: #0095DA;
+    -webkit-transition:0.5s all;
+	transition:0.5s all;
+    z-index: 2;
+}
+
+html, body, .screen , #comeandjoin , #thefun , svg{width: 100%;height: 100%;}
+
+body {
+    margin: 0px;
+    background-color: #1f4384;
+    background-image: url("../img/bg.png");
+    background-position:  center ;
+    background-repeat: no-repeat;
+    background-size: 100% auto , 65% auto;
+}
+img {
+    width: 100%;
+}
+
+/* Start Screen */
+.screen{
+    display: none;
+    position: fixed;
+}
+
+figure#large_logo {
+    margin: auto;
+    position: absolute;
+    left: 50%;
+    top: 56px;
+    transform: translateX(-50%);
+}
+
+.text {
+    width: 75%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+
+
+figure#topText {
+    transform: translate(-50%,-565px);
+}
+
+
+figure#bottomText {
+    transform: translate(-50%,550px);
+}
+
+.screen_start #screen_start, #screen_count_down{display: block;}
+
+.count{display: none;}
+.count.show{display: block;}
+
+.count {
+    position: absolute;
+    width: 75vmin;
+    top: 50%;
+    margin: 0;
+    left: 50%;
+    transform: translate(-50%, -210px);
+    height: 75vmin;
+}
+
+img.number {
+    width: 45vmin;
+    height: 45vmin;
+}
+
+.count figure {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    top: 0;
+}
+
+#count_letPlay{
+    z-index: 10000;
+}
+
+#count_letPlay.playing figure:not(#faster){
+    display: none;
+}
+
+.count figure img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: contain;
+    object-position: center;
+    transform-origin: top left;
+}
+#getReady, #go{
+    display: none;
+}
+img.getReady {
+    width: 75vmin;
+    height: 60vmin;
+}
+img.letPlay {
+    width: 60vmin;
+    height: 60vmin;
+    animation:sway 3.5s infinite ease-in-out;
+}
+
+.aniOut{
+    animation: 0.25s aniOut;
+    animation-fill-mode: forwards;
+    transform-origin: initial;
+}
+.aniOutCic{
+    animation: 0.25s aniOutCic;
+    animation-fill-mode: forwards;
+    transform-origin: initial;
+}
+
+.ready #letPlay{
+    animation: 0.25s aniOut;
+    animation-fill-mode: forwards;
+    transform-origin: initial;
+}
+
+.won #letPlay, .fail #letPlay{
+    transform: scale(0)
+}
+
+.ready #getReady{
+    display: block;
+    animation: 1.5s readyAni;
+    animation-delay: 0.3s;
+    animation-fill-mode: forwards;
+    transform-origin: initial;
+    transform: scale(0);
+}
+
+.ready #go{
+    display: block;
+    animation: 0.7s goAni;
+    animation-delay: 1.6s;
+    animation-fill-mode: forwards;
+    transform-origin: initial;
+    transform: scale(0);
+}
+.count figure img.won {
+    width: 80vmin;
+    height: 75vmin;
+    animation: sway 3.5s infinite ease-in-out;
+}
+
+#won{
+    display:none;
+}
+.won #won{
+    display:block;
+    animation: aniInSkewRight 0.5s;
+    transform: rotate(5deg);
+}
+
+.fail #fail {
+    display:block;
+    animation: aniIn 0.5s;
+}
+
+
+figure#fail {display: none;}
+
+img.number.fail {
+    width: 80vmin;
+}
+
+#faster{
+    transform: scale(0)
+}
+#faster .faster {
+    width: 80vmin;
+}
+
+.faster #faster{
+    display:block;
+    animation: aniInOut 0.6s;
+}
